@@ -74,7 +74,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# CyberAware-React
-A static cybersecurity awareness website rebuilt in React, featuring dynamic data, API integration (GitHub, Firebase, AI), and Tailwind CSS.
->>>>>>> origin/main
