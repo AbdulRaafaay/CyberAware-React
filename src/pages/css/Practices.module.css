@@ -1,0 +1,138 @@
+.practices {
+  font-family: 'Roboto Mono', monospace;
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding-top: 70px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.themeToggleContainer {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 999;
+}
+
+.pageHeader {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.pageTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00ff00;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.pageSubtitle {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+}
+
+.practicesSection {
+  padding: 4rem 0;
+  background: #0a0a0a;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  color: #00ff00;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.practicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.practiceCard {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.practiceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 255, 0, 0.2);
+}
+
+.practiceIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.practiceCard h3 {
+  color: #00ff00;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.practiceDescription {
+  color: #b0b0b0;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.practiceTips {
+  margin-bottom: 1.5rem;
+}
+
+.tipItem {
+  color: #e0e0e0;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(0, 255, 0, 0.3);
+}
+
+.priorityLevel {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.critical {
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff4444;
+  border: 1px solid #ff4444;
+}
+
+.high {
+  background: rgba(255, 165, 0, 0.2);
+  color: #ffaa00;
+  border: 1px solid #ffaa00;
+}
+
+.medium {
+  background: rgba(255, 255, 0, 0.2);
+  color: #ffff00;
+  border: 1px solid #ffff00;
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 2rem;
+  }
+
+  .practicesGrid {
+    grid-template-columns: 1fr;
+  }
+}
