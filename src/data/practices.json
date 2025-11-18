@@ -1,0 +1,178 @@
+{
+  "passwordSecurity": [
+    {
+      "icon": "🔐",
+      "title": "Strong Passwords",
+      "description": "Create complex passwords with at least 12 characters including uppercase, lowercase, numbers, and symbols.",
+      "tips": [
+        "Do: Use a mix of characters and make it unique",
+        "Don't: Use personal information or common words",
+        "Example: MyP@ssw0rd2024!Secure"
+      ],
+      "priority": "high"
+    },
+    {
+      "icon": "🔑",
+      "title": "Password Manager",
+      "description": "Use a password manager to generate, store, and manage unique passwords for all your accounts.",
+      "tips": [
+        "Benefits: One master password, unique passwords everywhere",
+        "Popular: LastPass, 1Password, Bitwarden",
+        "Security: Encrypted storage, auto-fill features"
+      ],
+      "priority": "high"
+    },
+    {
+      "icon": "🔄",
+      "title": "Regular Updates",
+      "description": "Change passwords regularly, especially after security incidents or data breaches.",
+      "tips": [
+        "Frequency: Every 3-6 months for critical accounts",
+        "Immediate: Change if account is compromised",
+        "Never: Reuse old passwords"
+      ],
+      "priority": "medium"
+    }
+  ],
+  "twoFactorAuth": [
+    {
+      "icon": "📱",
+      "title": "Authenticator Apps",
+      "description": "Use authenticator apps like Google Authenticator or Microsoft Authenticator for secure 2FA.",
+      "tips": [
+        "Advantages: Works offline, more secure than SMS",
+        "Setup: Scan QR code, enter 6-digit code",
+        "Backup: Save recovery codes in safe place"
+      ],
+      "priority": "critical"
+    },
+    {
+      "icon": "💬",
+      "title": "SMS 2FA",
+      "description": "SMS-based 2FA provides an additional layer of security through text messages.",
+      "tips": [
+        "Good for: Basic security when app not available",
+        "Limitations: SIM swapping attacks possible",
+        "Better than: No 2FA at all"
+      ],
+      "priority": "medium"
+    },
+    {
+      "icon": "🔐",
+      "title": "Hardware Keys",
+      "description": "Physical security keys like YubiKey provide the highest level of 2FA security.",
+      "tips": [
+        "Best for: High-value accounts and businesses",
+        "Types: USB, NFC, Bluetooth options",
+        "Security: Phishing-resistant, tamper-proof"
+      ],
+      "priority": "high"
+    }
+  ],
+  "softwareUpdates": [
+    {
+      "icon": "💻",
+      "title": "Operating System",
+      "description": "Keep your operating system updated with the latest security patches and updates.",
+      "tips": [
+        "Windows: Enable automatic updates",
+        "Mac: Check for updates regularly",
+        "Linux: Use package manager updates"
+      ],
+      "priority": "critical"
+    },
+    {
+      "icon": "🌐",
+      "title": "Web Browsers",
+      "description": "Update browsers regularly to protect against web-based attacks and vulnerabilities.",
+      "tips": [
+        "Chrome: Updates automatically",
+        "Firefox: Check for updates manually",
+        "Edge: Windows Update handles it"
+      ],
+      "priority": "high"
+    },
+    {
+      "icon": "📱",
+      "title": "Mobile Apps",
+      "description": "Keep mobile apps updated to ensure you have the latest security features and bug fixes.",
+      "tips": [
+        "iOS: App Store automatic updates",
+        "Android: Google Play auto-update",
+        "Manual: Check for updates weekly"
+      ],
+      "priority": "high"
+    }
+  ],
+  "networkSecurity": [
+    {
+      "icon": "🔒",
+      "title": "VPN Usage",
+      "description": "Use a Virtual Private Network (VPN) when connecting to public Wi-Fi or untrusted networks.",
+      "tips": [
+        "When to use: Public Wi-Fi, hotels, airports",
+        "Benefits: Encrypted connection, IP masking",
+        "Choose: Reputable VPN providers only"
+      ],
+      "priority": "high"
+    },
+    {
+      "icon": "🏠",
+      "title": "Home Network",
+      "description": "Secure your home Wi-Fi network with strong passwords and encryption.",
+      "tips": [
+        "Password: Use WPA3 encryption if available",
+        "SSID: Don't broadcast network name",
+        "Guest: Enable guest network for visitors"
+      ],
+      "priority": "high"
+    },
+    {
+      "icon": "📡",
+      "title": "Firewall",
+      "description": "Enable firewall protection on your devices to block unauthorized network access.",
+      "tips": [
+        "Windows: Built-in Windows Firewall",
+        "Mac: System Preferences > Security",
+        "Router: Enable router firewall too"
+      ],
+      "priority": "medium"
+    }
+  ],
+  "emailSecurity": [
+    {
+      "icon": "📧",
+      "title": "Phishing Awareness",
+      "description": "Learn to identify and avoid phishing emails that try to steal your information.",
+      "tips": [
+        "Red flags: Urgent language, suspicious links",
+        "Verify: Check sender email address",
+        "Never: Click links in suspicious emails"
+      ],
+      "priority": "critical"
+    },
+    {
+      "icon": "📎",
+      "title": "Attachments",
+      "description": "Be cautious with email attachments, especially from unknown senders.",
+      "tips": [
+        "Scan: Use antivirus to scan attachments",
+        "Verify: Confirm sender before opening",
+        "Avoid: .exe, .bat, .scr files"
+      ],
+      "priority": "high"
+    },
+    {
+      "icon": "🔍",
+      "title": "Email Filtering",
+      "description": "Use email filtering and spam protection to reduce malicious emails.",
+      "tips": [
+        "Gmail: Built-in spam filtering",
+        "Outlook: Junk email settings",
+        "Custom: Create rules for specific senders"
+      ],
+      "priority": "medium"
+    }
+  ]
+}
+

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "WannaCry Ransomware",
+    "year": "2017",
+    "description": "A global ransomware attack that infected over 200,000 computers in 150 countries within hours.",
+    "timeline": [
+      {
+        "date": "May 12, 2017",
+        "event": "Initial Attack",
+        "details": "WannaCry ransomware begins spreading globally, infecting over 200,000 computers in 150 countries within hours."
+      },
+      {
+        "date": "May 13, 2017",
+        "event": "Kill Switch Discovery",
+        "details": "Security researcher Marcus Hutchins discovers a kill switch in the malware, slowing its spread significantly."
+      },
+      {
+        "date": "May 15, 2017",
+        "event": "Attribution",
+        "details": "U.S. and U.K. governments attribute the attack to North Korean hackers, specifically the Lazarus Group."
+      }
+    ],
+    "impact": "Affected hospitals, businesses, and government agencies worldwide, causing billions in damages."
+  },
+  {
+    "name": "Equifax Data Breach",
+    "year": "2017",
+    "description": "One of the largest data breaches in history, exposing personal information of 147 million people.",
+    "timeline": [
+      {
+        "date": "May 2017",
+        "event": "Initial Breach",
+        "details": "Attackers exploit a vulnerability in Apache Struts framework to gain access to Equifax systems."
+      },
+      {
+        "date": "July 29, 2017",
+        "event": "Discovery",
+        "details": "Equifax discovers the breach and begins investigation."
+      },
+      {
+        "date": "September 7, 2017",
+        "event": "Public Disclosure",
+        "details": "Equifax publicly announces the breach, affecting 147 million consumers."
+      }
+    ],
+    "impact": "Exposed Social Security numbers, birth dates, addresses, and credit card information of millions."
+  },
+  {
+    "name": "SolarWinds Attack",
+    "year": "2020",
+    "description": "A sophisticated supply chain attack that compromised thousands of organizations including government agencies.",
+    "timeline": [
+      {
+        "date": "March 2020",
+        "event": "Initial Compromise",
+        "details": "Attackers inject malicious code into SolarWinds Orion software updates."
+      },
+      {
+        "date": "December 2020",
+        "event": "Discovery",
+        "details": "FireEye discovers the attack and notifies SolarWinds and government agencies."
+      },
+      {
+        "date": "January 2021",
+        "event": "Attribution",
+        "details": "U.S. government attributes the attack to Russian state-sponsored hackers."
+      }
+    ],
+    "impact": "Compromised 18,000+ organizations including U.S. government agencies and Fortune 500 companies."
+  }
+]
+

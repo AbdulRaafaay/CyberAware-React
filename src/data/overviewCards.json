@@ -1,0 +1,27 @@
+[
+  {
+    "icon": "🎯",
+    "title": "Cyber Attacks",
+    "description": "Learn about different types of cyber threats and how they work",
+    "link": "/attacks"
+  },
+  {
+    "icon": "✅",
+    "title": "Best Practices",
+    "description": "Essential security measures to protect yourself online",
+    "link": "/practices"
+  },
+  {
+    "icon": "📰",
+    "title": "Famous Incidents",
+    "description": "Real-world examples of major cybersecurity breaches",
+    "link": "/incidents"
+  },
+  {
+    "icon": "💼",
+    "title": "Careers",
+    "description": "Explore exciting career opportunities in cybersecurity",
+    "link": "/careers"
+  }
+]
+

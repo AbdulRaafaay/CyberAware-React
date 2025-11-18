@@ -1,0 +1,155 @@
+{
+  "socialEngineering": [
+    {
+      "icon": "🎣",
+      "name": "Phishing",
+      "description": "Fraudulent attempts to obtain sensitive information by disguising as trustworthy entities in electronic communications.",
+      "commonTargets": "Email, SMS, Phone calls",
+      "goal": "Steal credentials, personal data",
+      "prevention": "Verify sender identity, don't click suspicious links",
+      "threatLevel": "high"
+    },
+    {
+      "icon": "🎭",
+      "name": "Pretexting",
+      "description": "Creating a fabricated scenario to obtain information or access from a target.",
+      "commonTargets": "Customer service, IT support",
+      "goal": "Gain unauthorized access",
+      "prevention": "Verify caller identity, follow security protocols",
+      "threatLevel": "medium"
+    },
+    {
+      "icon": "🎯",
+      "name": "Spear Phishing",
+      "description": "Targeted phishing attacks directed at specific individuals or organizations.",
+      "commonTargets": "Executives, high-value employees",
+      "goal": "Steal sensitive data, gain access",
+      "prevention": "Security awareness training, email filtering",
+      "threatLevel": "high"
+    },
+    {
+      "icon": "🐋",
+      "name": "Whaling",
+      "description": "Phishing attacks specifically targeting senior executives and high-profile individuals.",
+      "commonTargets": "CEOs, CFOs, Board members",
+      "goal": "Financial fraud, data theft",
+      "prevention": "Executive protection protocols, verification",
+      "threatLevel": "critical"
+    }
+  ],
+  "malware": [
+    {
+      "icon": "🦠",
+      "name": "Ransomware",
+      "description": "Malicious software that encrypts files and demands payment for decryption.",
+      "commonTargets": "Healthcare, government, businesses",
+      "goal": "Financial gain through extortion",
+      "prevention": "Regular backups, security updates, training",
+      "threatLevel": "critical"
+    },
+    {
+      "icon": "🕷️",
+      "name": "Trojan Horse",
+      "description": "Malicious software disguised as legitimate software to gain access to systems.",
+      "commonTargets": "Personal computers, corporate networks",
+      "goal": "Steal data, create backdoors",
+      "prevention": "Antivirus software, avoid suspicious downloads",
+      "threatLevel": "high"
+    },
+    {
+      "icon": "🦠",
+      "name": "Virus",
+      "description": "Self-replicating malware that spreads by infecting other files and programs.",
+      "commonTargets": "Files, programs, boot sectors",
+      "goal": "Damage systems, steal data",
+      "prevention": "Antivirus software, safe browsing habits",
+      "threatLevel": "medium"
+    },
+    {
+      "icon": "🕸️",
+      "name": "Spyware",
+      "description": "Software that secretly monitors and collects information about users.",
+      "commonTargets": "Personal data, browsing habits",
+      "goal": "Steal personal information",
+      "prevention": "Anti-spyware tools, careful downloads",
+      "threatLevel": "medium"
+    }
+  ],
+  "network": [
+    {
+      "icon": "🌊",
+      "name": "DDoS Attack",
+      "description": "Distributed Denial of Service attacks that overwhelm servers with traffic.",
+      "commonTargets": "Websites, online services",
+      "goal": "Disrupt services, cause downtime",
+      "prevention": "DDoS protection, traffic filtering",
+      "threatLevel": "high"
+    },
+    {
+      "icon": "👂",
+      "name": "Man-in-the-Middle",
+      "description": "Attackers intercept and potentially alter communications between two parties.",
+      "commonTargets": "Public Wi-Fi, unsecured networks",
+      "goal": "Steal data, intercept communications",
+      "prevention": "VPN usage, encrypted connections",
+      "threatLevel": "high"
+    },
+    {
+      "icon": "🔓",
+      "name": "Password Attack",
+      "description": "Various methods to crack or bypass password authentication.",
+      "commonTargets": "User accounts, admin access",
+      "goal": "Gain unauthorized access",
+      "prevention": "Strong passwords, 2FA, rate limiting",
+      "threatLevel": "medium"
+    },
+    {
+      "icon": "📡",
+      "name": "Eavesdropping",
+      "description": "Unauthorized interception of network communications.",
+      "commonTargets": "Unencrypted communications",
+      "goal": "Steal sensitive information",
+      "prevention": "Encryption, secure protocols",
+      "threatLevel": "medium"
+    }
+  ],
+  "webApplication": [
+    {
+      "icon": "💉",
+      "name": "SQL Injection",
+      "description": "Inserting malicious SQL code into input fields to manipulate databases.",
+      "commonTargets": "Web forms, login pages",
+      "goal": "Steal data, bypass authentication",
+      "prevention": "Input validation, parameterized queries",
+      "threatLevel": "critical"
+    },
+    {
+      "icon": "🌐",
+      "name": "Cross-Site Scripting (XSS)",
+      "description": "Injecting malicious scripts into web pages viewed by other users.",
+      "commonTargets": "Web applications, user inputs",
+      "goal": "Steal session data, deface websites",
+      "prevention": "Input sanitization, CSP headers",
+      "threatLevel": "high"
+    },
+    {
+      "icon": "🔐",
+      "name": "Cross-Site Request Forgery (CSRF)",
+      "description": "Tricking users into performing unwanted actions on web applications.",
+      "commonTargets": "Authenticated users",
+      "goal": "Unauthorized actions, data modification",
+      "prevention": "CSRF tokens, same-site cookies",
+      "threatLevel": "high"
+    },
+    {
+      "icon": "📁",
+      "name": "Directory Traversal",
+      "description": "Accessing files and directories outside the web root directory.",
+      "commonTargets": "Web servers, file systems",
+      "goal": "Access sensitive files",
+      "prevention": "Input validation, access controls",
+      "threatLevel": "medium"
+    }
+  ]
+}
+
