@@ -1,37 +1,29 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import AttacksPage from './pages/AttacksPage';
-import CareersPage from './pages/CareersPage';
-import GitHubSearchPage from './pages/GitHubSearchPage';
-import IncidentsPage from './pages/IncidentsPage';
-import PracticesPage from './pages/PracticesPage';
-import ResourcesPage from './pages/ResourcesPage';
+import Home from './pages/js/Home';
+import Attacks from './pages/js/Attacks';
+import Careers from './pages/js/Careers';
+import GithubSearch from './pages/js/GithubSearch';
+import Incidents from './pages/js/Incidents';
+import Practices from './pages/js/Practices';
+import Resources from './pages/js/Resources';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import './App.css';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/attacks">Attacks</Link>
-            <Link to="/careers">Careers</Link>
-            <Link to="/github-search">GitHub Search</Link>
-            <Link to="/incidents">Incidents</Link>
-            <Link to="/practices">Practices</Link>
-            <Link to="/resources">Resources</Link>
-          </nav>
-        </header>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/attacks" element={<AttacksPage />} />
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/github-search" element={<GitHubSearchPage />} />
-          <Route path="/incidents" element={<IncidentsPage />} />
-          <Route path="/practices" element={<PracticesPage />} />
-          <Route path="/resources" element={<ResourcesPage />} />
-        </Routes>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/attacks" element={<Attacks />} />
+        <Route path="/practices" element={<Practices />} />
+        <Route path="/incidents" element={<Incidents />} />
+        <Route path="/careers" element={<Careers />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/github-search" element={<GithubSearch />} />
+      </Routes>
+      <Footer />
     </Router>
   );
 }
