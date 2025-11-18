@@ -1,0 +1,102 @@
+/* Navigation Bar - FLEXBOX LAYOUT */
+.navbar {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  box-shadow: 0 2px 20px rgba(0, 255, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 70px;
+  /* FLEXBOX: Horizontal layout with space between logo and menu */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navLogo h2 {
+  color: #00ff00;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  margin: 0;
+}
+
+.navLogo a {
+  text-decoration: none;
+}
+
+.navMenu {
+  /* FLEXBOX: Horizontal list layout */
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: #e0e0e0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: #00ff00;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Hamburger Menu - CSS Only */
+.navToggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #00ff00;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navMenu {
+    position: absolute;
+    left: 0;
+    top: 70px;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    box-shadow: 0 2px 20px rgba(0, 255, 0, 0.1);
+    padding: 1rem 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .navMenuOpen {
+    transform: translateX(0);
+  }
+
+  .navItem {
+    padding: 0.5rem 2rem;
+  }
+}
