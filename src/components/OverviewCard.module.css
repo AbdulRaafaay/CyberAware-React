@@ -1,0 +1,10 @@
+.overviewCard {
+  background: var(--card-bg, #fff);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.cardIcon { font-size: 1.5rem; }
+.cardTitle { margin: 8px 0; font-size: 1.05rem; }
+.cardDescription { color: #555; font-size: 0.95rem; }
+.cardLink { color: var(--primary, #0066ff); text-decoration: none; font-weight: 600; }
