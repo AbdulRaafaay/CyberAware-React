@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Footer.css';
+import styles from './Footer.module.css';
 
 const Footer = () => {
   return (
@@ -36,3 +36,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

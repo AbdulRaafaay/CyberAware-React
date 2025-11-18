@@ -1,12 +1,11 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/js/Home';
 import Attacks from './pages/js/Attacks';
-import Practices from './pages/js/Practices';
-import Incidents from './pages/js/Incidents';
 import Careers from './pages/js/Careers';
+import GithubSearch from './pages/js/GithubSearch';
+import Incidents from './pages/js/Incidents';
+import Practices from './pages/js/Practices';
 import Resources from './pages/js/Resources';
-import GithubSearch from './pages/js/GitHubSearch';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import './App.css';
