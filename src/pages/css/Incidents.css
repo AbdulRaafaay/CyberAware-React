@@ -1,0 +1,119 @@
+.incidents {
+  font-family: 'Roboto Mono', monospace;
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  min-height: 100vh;
+  padding-top: 70px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.themeToggleContainer {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 999;
+}
+
+.pageHeader {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.pageTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #00ff00;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.pageSubtitle {
+  font-size: 1.2rem;
+  color: #b0b0b0;
+}
+
+.incidentsSection {
+  padding: 4rem 0;
+  background: #0a0a0a;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  color: #00ff00;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.incidentDescription {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.incidentTimeline {
+  margin-bottom: 2rem;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 10px;
+  border-left: 4px solid #00ff00;
+}
+
+.timelineDate {
+  color: #00ff00;
+  font-weight: 700;
+  min-width: 150px;
+  font-size: 1.1rem;
+}
+
+.timelineContent h3 {
+  color: #00ff00;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.timelineContent p {
+  color: #b0b0b0;
+  line-height: 1.6;
+}
+
+.impact {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid #ff4444;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #ffaaaa;
+  line-height: 1.8;
+}
+
+.impact strong {
+  color: #ff4444;
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 2rem;
+  }
+
+  .timelineItem {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .timelineDate {
+    min-width: auto;
+  }
+}
+
