@@ -6,7 +6,6 @@ import GitHubSearchPage from './pages/GitHubSearchPage';
 import IncidentsPage from './pages/IncidentsPage';
 import PracticesPage from './pages/PracticesPage';
 import ResourcesPage from './pages/ResourcesPage';
-
 function App() {
   return (
     <Router>
