@@ -14,3 +14,28 @@
   background: rgba(0, 255, 0, 0.2);
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
+
+.storageToggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 255, 0, 0.1);
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  z-index: 500;
+}
+
+.storageToggle:hover {
+  background: rgba(0, 255, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.storageToggle:active {
+  transform: scale(0.95);
+}

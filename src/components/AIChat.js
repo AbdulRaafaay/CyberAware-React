@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './AIChat.css';
+import styles from './AIChat.module.css';
 
 const AIChat = () => {
   const [messages, setMessages] = useState([
@@ -11,20 +11,19 @@ const AIChat = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Smart AI responses using Google Gemini API
+  // Call Gemini API with proper error handling
   const generateAIResponse = async (userInput) => {
     const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
     
     if (!apiKey) {
-      console.error('REACT_APP_GEMINI_API_KEY not set in .env.local');
-      throw new Error('API key not configured');
+      throw new Error('Gemini API key is not configured. Please add REACT_APP_GEMINI_API_KEY to .env.local');
     }
 
     const prompt = `You are a cybersecurity expert assistant. Answer this question concisely (2-3 sentences): ${userInput}`;
 
     try {
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${apiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
         {
           method: 'POST',
           headers: {
@@ -39,26 +38,46 @@ const AIChat = () => {
                   }
                 ]
               }
-            ]
+            ],
+            generationConfig: {
+              maxOutputTokens: 256,
+              temperature: 0.7,
+            }
           })
         }
       );
 
       if (!response.ok) {
-        const errData = await response.json();
-        console.error('Gemini API error:', errData);
-        throw new Error(`API error: ${response.status}`);
+        const errorData = await response.json();
+        console.error('Gemini API Error Response:', errorData);
+        
+        if (response.status === 400) {
+          throw new Error('Invalid request to Gemini API. Check your prompt or API key.');
+        } else if (response.status === 401) {
+          throw new Error('Unauthorized: API key is invalid or expired.');
+        } else if (response.status === 429) {
+          throw new Error('Rate limit exceeded. Please try again in a moment.');
+        } else {
+          throw new Error(`API Error: ${errorData.error?.message || response.statusText}`);
+        }
       }
 
       const data = await response.json();
       
-      if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-        return data.candidates[0].content.parts[0].text;
+      // Check for the response structure from Gemini API
+      if (data.candidates && data.candidates.length > 0) {
+        const candidate = data.candidates[0];
+        if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
+          const responseText = candidate.content.parts[0].text;
+          if (responseText && responseText.trim()) {
+            return responseText;
+          }
+        }
       }
 
-      throw new Error('No response generated');
+      throw new Error('Unexpected response format from Gemini API');
     } catch (error) {
-      console.error('Gemini API error:', error);
+      console.error('Gemini API Error:', error);
       throw error;
     }
   };
@@ -76,9 +95,10 @@ const AIChat = () => {
       setMessages(prev => [...prev, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
       console.error('Chat error:', error);
+      const errorMessage = error.message || 'Sorry, I couldn\'t process that request. Please make sure your Gemini API key is set correctly in .env.local';
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        content: 'Sorry, I couldn\'t process that request. Please make sure your Gemini API key is set in .env.local and you have an internet connection.' 
+        content: errorMessage
       }]);
     } finally {
       setIsLoading(false);

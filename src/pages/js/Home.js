@@ -3,15 +3,36 @@ import { Link } from 'react-router-dom';
 import AIChat from '../../components/AIChat';
 import statsData from '../../data/stats.json';
 import overviewCardsData from '../../data/overviewCards.json';
+import { fetchCybersecurityNews } from '../../services/api';
 import styles from '../css/Home.module.css';
 
 const Home = () => {
   const [stats, setStats] = useState([]);
   const [cards, setCards] = useState([]);
+  const [news, setNews] = useState([]);
+  const [newsLoading, setNewsLoading] = useState(true);
+  const [newsError, setNewsError] = useState('');
 
   useEffect(() => {
     setStats(statsData);
     setCards(overviewCardsData);
+    
+    // Fetch news from API
+    const loadNews = async () => {
+      try {
+        setNewsLoading(true);
+        const newsArticles = await fetchCybersecurityNews();
+        setNews(newsArticles);
+        setNewsError('');
+      } catch (error) {
+        console.error('Error fetching news:', error);
+        setNewsError('Failed to load news. Please try again later.');
+      } finally {
+        setNewsLoading(false);
+      }
+    };
+    
+    loadNews();
   }, []);
 
   return (
@@ -82,6 +103,52 @@ const Home = () => {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Ask AI About Cybersecurity</h2>
           <AIChat />
+        </div>
+      </section>
+
+      {/* News Section */}
+      <section className={styles.newsSection}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>Latest Cybersecurity News</h2>
+          {newsLoading && (
+            <div className={styles.loadingMessage}>Loading news...</div>
+          )}
+          {newsError && (
+            <div className={styles.errorMessage}>{newsError}</div>
+          )}
+          {!newsLoading && news.length > 0 && (
+            <div className={styles.newsGrid}>
+              {news.map((article, index) => (
+                <div key={index} className={styles.newsCard}>
+                  {article.urlToImage && (
+                    <img 
+                      src={article.urlToImage} 
+                      alt={article.title}
+                      className={styles.newsImage}
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                      }}
+                    />
+                  )}
+                  <div className={styles.newsContent}>
+                    <h3 className={styles.newsTitle}>{article.title}</h3>
+                    <p className={styles.newsDescription}>{article.description}</p>
+                    <div className={styles.newsFooter}>
+                      <span className={styles.newsSource}>{article.source.name}</span>
+                      <a 
+                        href={article.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className={styles.newsLink}
+                      >
+                        Read More →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

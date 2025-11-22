@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import attacksData from '../../data/attacks.json';
 import styles from '../css/Attacks.module.css';
 
 const Attacks = () => {
-  const [attacks, setAttacks] = useState(attacksData);
+  const [attacks] = useState(attacksData);
   const [searchTerm, setSearchTerm] = useState('');
   const [filterCategory, setFilterCategory] = useState('all');
 

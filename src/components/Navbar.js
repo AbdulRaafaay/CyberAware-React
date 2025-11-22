@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Navbar.module.css';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,6 +35,7 @@ const Navbar = () => {
           <span className={styles.bar}></span>
           <span className={styles.bar}></span>
         </label>
+        <ThemeToggle />
         <ul className={`${styles.navMenu} ${isMenuOpen ? styles.navMenuOpen : ''}`}>
           <li className={styles.navItem}>
             <Link to="/" className={`${styles.navLink} ${isActive('/')}`} onClick={() => setIsMenuOpen(false)}>
