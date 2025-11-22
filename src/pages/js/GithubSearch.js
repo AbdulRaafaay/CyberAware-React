@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../css/GitHubSearch.module.css';
+import '../css/GitHubSearch.css';
 
 const GithubSearch = () => {
   const [username, setUsername] = useState('');
@@ -47,52 +47,33 @@ const GithubSearch = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1>GitHub User Search</h1>
-        <p>Search for GitHub users by username</p>
-      </div>
+    <div>
+      <h1>GitHub User Search</h1>
+      <p>Search for GitHub users by username</p>
 
-      <form onSubmit={searchUsers} className={styles.searchForm}>
+      <form onSubmit={searchUsers}>
         <input
           type="text"
-          placeholder="Enter GitHub username..."
+          placeholder="Enter username..."
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className={styles.searchInput}
         />
-        <button type="submit" disabled={loading} className={styles.searchButton}>
+        <button type="submit" disabled={loading}>
           {loading ? 'Searching...' : 'Search'}
         </button>
       </form>
-
-      {error && <div className={styles.error}>{error}</div>}
+      {error && <p>{error}</p>}
 
       {users.length > 0 && (
-        <div className={styles.resultsContainer}>
-          <h2>Search Results ({users.length})</h2>
-          <div className={styles.userGrid}>
-            {users.map((user) => (
-              <div key={user.id} className={styles.userCard}>
-                <img 
-                  src={user.avatar_url} 
-                  alt={user.login}
-                  className={styles.avatar}
-                />
-                <div className={styles.userInfo}>
-                  <h3>{user.login}</h3>
-                  <a 
-                    href={user.html_url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={styles.profileLink}
-                  >
-                    View Profile →
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div>
+          {users.map((user) => (
+            <div key={user.id}>
+              <h3>{user.login}</h3>
+              <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+                View Profile
+              </a>
+            </div>
+          ))}
         </div>
       )}
     </div>
