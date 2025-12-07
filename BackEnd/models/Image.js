@@ -1,0 +1,4 @@
+// Image Model
+
+module.exports = {};
+
