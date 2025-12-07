@@ -1,0 +1,136 @@
+{
+  "stats": [
+    {
+      "number": "3.5M",
+      "label": "Unfilled Positions Globally"
+    },
+    {
+      "number": "$95K",
+      "label": "Average Salary (Entry Level)"
+    },
+    {
+      "number": "31%",
+      "label": "Job Growth Rate (2022-2032)"
+    },
+    {
+      "number": "100%",
+      "label": "Remote Work Opportunities"
+    }
+  ],
+  "careers": [
+    {
+      "icon": "🛡️",
+      "title": "Security Analyst",
+      "description": "Monitor security systems, analyze threats, and respond to security incidents.",
+      "salaryRange": "$60K - $120K",
+      "experience": "0-3 years",
+      "skills": "SIEM, threat analysis, incident response",
+      "certifications": "Security+, CySA+, GCIH",
+      "level": "entry"
+    },
+    {
+      "icon": "🎯",
+      "title": "Penetration Tester",
+      "description": "Ethically hack systems to identify vulnerabilities and security weaknesses.",
+      "salaryRange": "$80K - $150K",
+      "experience": "2-5 years",
+      "skills": "Ethical hacking, vulnerability assessment, reporting",
+      "certifications": "CEH, OSCP, GPEN",
+      "level": "mid"
+    },
+    {
+      "icon": "🔍",
+      "title": "Security Engineer",
+      "description": "Design, implement, and maintain security infrastructure and systems.",
+      "salaryRange": "$90K - $160K",
+      "experience": "3-7 years",
+      "skills": "System design, automation, cloud security",
+      "certifications": "CISSP, CISM, AWS Security",
+      "level": "mid"
+    },
+    {
+      "icon": "👨‍💼",
+      "title": "Security Manager",
+      "description": "Lead security teams, develop policies, and manage security programs.",
+      "salaryRange": "$100K - $180K",
+      "experience": "5-10 years",
+      "skills": "Leadership, risk management, compliance",
+      "certifications": "CISSP, CISM, CISA",
+      "level": "senior"
+    },
+    {
+      "icon": "🔬",
+      "title": "Digital Forensics Analyst",
+      "description": "Investigate cybercrimes and analyze digital evidence for legal proceedings.",
+      "salaryRange": "$70K - $140K",
+      "experience": "2-6 years",
+      "skills": "Forensic tools, evidence handling, legal knowledge",
+      "certifications": "GCFA, GCIH, EnCE",
+      "level": "mid"
+    },
+    {
+      "icon": "☁️",
+      "title": "Cloud Security Architect",
+      "description": "Design and implement security solutions for cloud environments.",
+      "salaryRange": "$110K - $200K",
+      "experience": "5-10 years",
+      "skills": "Cloud platforms, architecture, DevSecOps",
+      "certifications": "CCSP, AWS Security, Azure Security",
+      "level": "senior"
+    }
+  ],
+  "certifications": {
+    "entry": [
+      {
+        "name": "CompTIA Security+",
+        "description": "Foundation security certification covering basic security concepts and practices.",
+        "difficulty": "easy"
+      },
+      {
+        "name": "CompTIA Network+",
+        "description": "Network fundamentals and security concepts for IT professionals.",
+        "difficulty": "easy"
+      },
+      {
+        "name": "CompTIA A+",
+        "description": "IT fundamentals including basic security concepts and troubleshooting.",
+        "difficulty": "easy"
+      }
+    ],
+    "intermediate": [
+      {
+        "name": "CEH (Certified Ethical Hacker)",
+        "description": "Ethical hacking techniques and penetration testing methodologies.",
+        "difficulty": "medium"
+      },
+      {
+        "name": "OSCP (Offensive Security Certified Professional)",
+        "description": "Hands-on penetration testing certification with practical exam.",
+        "difficulty": "hard"
+      },
+      {
+        "name": "CySA+ (Cybersecurity Analyst+)",
+        "description": "Security analysis, threat detection, and incident response.",
+        "difficulty": "medium"
+      }
+    ],
+    "advanced": [
+      {
+        "name": "CISSP (Certified Information Systems Security Professional)",
+        "description": "Comprehensive security management and leadership certification.",
+        "difficulty": "hard"
+      },
+      {
+        "name": "CISM (Certified Information Security Manager)",
+        "description": "Information security management and governance focus.",
+        "difficulty": "hard"
+      },
+      {
+        "name": "CISA (Certified Information Systems Auditor)",
+        "description": "Information systems auditing, control, and assurance.",
+        "difficulty": "hard"
+      }
+    ]
+  }
+}
+
