@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./config/database');
+const { apiLimiter } = require('./middleware/rateLimiter');
 
 // Load environment variables
 dotenv.config();
@@ -26,6 +27,9 @@ app.use(
     credentials: true,
   })
 );
+
+// Rate limiting for all /api routes
+app.use('/api', apiLimiter);
 
 // Body Parser Middleware
 app.use(express.json());
@@ -49,8 +53,8 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Routes will be added here
-// app.use('/api/auth', require('./routes/authRoutes'));
+// Routes
+app.use('/api/auth', require('./routes/authRoutes'));
 // app.use('/api/incidents', require('./routes/incidentRoutes'));
 // app.use('/api/users', require('./routes/userRoutes'));
 // app.use('/api/upload', require('./routes/uploadRoutes'));

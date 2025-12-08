@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const { generateToken } = require('../utils/generateToken');
 
 const userSchema = new mongoose.Schema(
@@ -37,6 +38,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
+    passwordChangedAt: Date,
+    passwordResetToken: String,
+    passwordResetExpires: Date,
   },
   {
     timestamps: true, // Automatically adds createdAt and updatedAt
@@ -64,6 +68,15 @@ userSchema.pre('save', async function (next) {
   }
 });
 
+// Set passwordChangedAt when password is updated (but not on new user)
+userSchema.pre('save', function (next) {
+  if (!this.isModified('password') || this.isNew) {
+    return next();
+  }
+  this.passwordChangedAt = Date.now() - 1000; // Slight offset to ensure token issued before save is invalidated
+  next();
+});
+
 // Method to compare password
 userSchema.methods.comparePassword = async function (candidatePassword) {
   try {
@@ -78,10 +91,29 @@ userSchema.methods.generateAuthToken = function () {
   return generateToken(this._id);
 };
 
+// Check if user changed password after JWT was issued
+userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
+};
+
+// Generate password reset token (returns plain token, stores hashed)
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+  this.passwordResetExpires = Date.now() + 15 * 60 * 1000; // 15 minutes
+  return resetToken;
+};
+
 // Remove password from JSON output
 userSchema.methods.toJSON = function () {
   const userObject = this.toObject();
   delete userObject.password;
+  delete userObject.passwordResetToken;
+  delete userObject.passwordResetExpires;
   return userObject;
 };
 
