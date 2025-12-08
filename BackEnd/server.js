@@ -9,11 +9,11 @@ const connectDB = require('./config/database');
 // Load environment variables
 dotenv.config();
 
-// Connect to database
-connectDB();
-
 // Initialize Express app
 const app = express();
+
+// Connect to database
+connectDB();
 
 // Security Middleware
 app.use(helmet());
