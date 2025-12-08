@@ -19,17 +19,18 @@ connectDB();
 
 // Security Middleware
 app.use(helmet());
-if (process.env.NODE_ENV !== 'test') {
-  app.use(mongoSanitize());
-}
+// if (process.env.NODE_ENV !== 'test') {
+//   app.use(mongoSanitize());
+// }
 
 // CORS Configuration
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-    credentials: true,
-  })
-);
+app.use(cors()); // Allow all origins for debugging
+// app.use(
+//   cors({
+//     origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+//     credentials: true,
+//   })
+// );
 
 // Rate limiting for all /api routes
 app.use('/api', apiLimiter);

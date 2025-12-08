@@ -21,6 +21,8 @@ const formatJwtError = () => ({ statusCode: 401, message: 'Invalid token. Please
 const formatJwtExpiredError = () => ({ statusCode: 401, message: 'Token expired. Please log in again.' });
 
 const errorHandler = (err, req, res, next) => {
+  console.error('Error caught by handler:', err); // Log for debugging
+
   // Default response
   let statusCode = err.statusCode || 500;
   let message = err.message || 'Internal Server Error';
