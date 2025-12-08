@@ -35,6 +35,14 @@ const register = catchAsync(async (req, res) => {
   // Hide password in response
   user.password = undefined;
 
+  // Send welcome email (non-blocking)
+  sendEmail({
+    to: email,
+    subject: 'Welcome to CyberAware',
+    text: `Hi ${name}, welcome to CyberAware! Your account has been created successfully.`,
+    html: `<p>Hi ${name},</p><p>Welcome to <strong>CyberAware</strong>! Your account has been created successfully.</p>`,
+  }).catch((err) => console.error('Welcome email failed:', err.message));
+
   sendAuthResponse(user, 201, res);
 });
 
@@ -77,13 +85,20 @@ const forgotPassword = catchAsync(async (req, res) => {
   await user.save({ validateBeforeSave: false });
 
   const resetURL = `${process.env.FRONTEND_URL || 'http://localhost:3000'}/reset-password/${resetToken}`;
-  const message = `You requested a password reset. Click the link to reset your password:\n\n${resetURL}\n\nIf you did not request this, please ignore this email.`;
+  const message = `You requested a password reset. Click the link to reset your password: ${resetURL}`;
+
+  const htmlMessage = `
+    <p>You requested a password reset.</p>
+    <p><a href="${resetURL}" target="_blank" rel="noopener">Reset your password</a></p>
+    <p>If you did not request this, please ignore this email.</p>
+  `;
 
   try {
     await sendEmail({
       to: user.email,
       subject: 'Password Reset Instructions',
       text: message,
+      html: htmlMessage,
     });
 
     res.status(200).json({ success: true, message: 'Password reset email sent' });
