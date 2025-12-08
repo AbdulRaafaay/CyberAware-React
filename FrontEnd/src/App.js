@@ -10,8 +10,8 @@ import Dashboard from './pages/js/Dashboard';
 import Profile from './pages/js/Profile';
 import Practices from './pages/js/Practices';
 import Resources from './pages/js/Resources';
-import Login from './pages/js/Login';
-import Register from './pages/js/Register';
+import ForgotPassword from './pages/js/ForgotPassword';
+import ResetPassword from './pages/js/ResetPassword';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -34,8 +34,8 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/github-search" element={<GithubSearch />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
         </Routes>
         <Footer />
       </Router>
