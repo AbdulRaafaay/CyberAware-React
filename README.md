@@ -114,7 +114,7 @@ cd BackEnd
 npm install
 
 # Create .env file from template
-cp .env.example .env
+env required
 
 # Fill in required environment variables:
 # - MONGODB_URI
@@ -144,7 +144,7 @@ cd FrontEnd
 npm install
 
 # Create .env file
-cp .env.example .env
+env required
 
 # Configure REACT_APP_API_URL=http://localhost:5000
 
@@ -309,21 +309,6 @@ Services included:
 2. Make your changes and commit: `git commit -m 'Add your feature'`
 3. Push to branch: `git push origin feature/your-feature`
 4. Create a Pull Request
-
-## 📄 License
-
-ISC License - See LICENSE file for details
-
-## 👤 Author
-
-**Abdulraafay**
-- GitHub: [@AbdulRaafaay](https://github.com/AbdulRaafaay)
-
-## 📞 Support
-
-For issues, questions, or suggestions, please open an issue on GitHub or contact support@cyberaware.com
-
----
 
 **Last Updated**: December 8, 2025
 **Version**: 1.0.0

@@ -792,4 +792,4 @@ This project is developed collaboratively by three team members, each owning spe
 
 ## License
 
-This project is created for educational purposes as part of the Web Programming course assignment.
+This project is created for educational purposes.
