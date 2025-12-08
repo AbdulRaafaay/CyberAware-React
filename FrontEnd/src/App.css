@@ -1,4 +1,93 @@
-/* Global App Styles */
+/* Global App Styles with Responsive Design */
+
 .App {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+/* Ensure body padding accounts for fixed navbar */
+body {
+  padding-top: 70px;
+}
+
+/* Main content area */
+main {
+  flex: 1;
+}
+
+/* Global responsive adjustments */
+@media (max-width: 1024px) {
+  body {
+    padding-top: 65px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 65px;
+  }
+
+  /* Reduce font sizes on tablets */
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.2rem !important;
+  }
+
+  p {
+    font-size: 0.95rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 60px;
+  }
+
+  /* Reduce font sizes on mobile */
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.3rem !important;
+  }
+
+  h3 {
+    font-size: 1rem !important;
+  }
+
+  p {
+    font-size: 0.9rem !important;
+  }
+
+  /* Add padding to small screens */
+  body > div,
+  main {
+    padding: 0 !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 600px) {
+  body {
+    padding-top: 60px;
+  }
+}
+

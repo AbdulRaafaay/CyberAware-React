@@ -1,75 +1,214 @@
 .footer {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   color: #e0e0e0;
-  padding: 3rem 0 1rem;
+  padding: 3rem 2rem 1rem;
   margin-top: 4rem;
+  border-top: 2px solid rgba(0, 255, 0, 0.2);
+  box-shadow: 0 -4px 15px rgba(0, 255, 0, 0.1);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  width: 100%;
 }
 
 .footerContent {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
 }
 
 .footerSection {
-  flex: 1;
-  min-width: 200px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.footerSection:hover {
+  transform: translateY(-2px);
 }
 
 .footerSection h3 {
   color: #00ff00;
-  margin-bottom: 1rem;
+  margin: 0 0 1rem 0;
   font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+  letter-spacing: 1px;
 }
 
 .footerSection h4 {
-  color: #00ff00;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+  color: #00ffff;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .footerSection p {
   color: #b0b0b0;
   line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
 }
 
 .footerSection ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footerSection ul li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .footerSection ul li a {
   color: #e0e0e0;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
 }
 
 .footerSection ul li a:hover {
   color: #00ff00;
+  border-bottom-color: #00ff00;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
 }
 
 .footerBottom {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid #2d2d2d;
-  color: #b0b0b0;
+  border-top: 1px solid rgba(0, 255, 0, 0.2);
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
-@media (max-width: 768px) {
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 2.5rem 1.5rem 1rem;
+  }
+
   .footerContent {
-    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footerSection h3 {
+    font-size: 1.3rem;
+  }
+
+  .footerSection h4 {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 1rem 1rem;
+    margin-top: 3rem;
+  }
+
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footerSection {
+    padding: 0.75rem;
+  }
+
+  .footerSection h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footerSection h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .footerSection p {
+    font-size: 0.9rem;
+  }
+
+  .footerSection ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .footerBottom {
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 0.75rem 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .footerContent {
+    gap: 1rem;
+  }
+
+  .footerSection {
+    padding: 0.5rem;
+  }
+
+  .footerSection h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footerSection h4 {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .footerSection p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .footerSection ul li {
+    margin-bottom: 0.4rem;
+  }
+
+  .footerSection ul li a {
+    font-size: 0.9rem;
+  }
+
+  .footerBottom {
+    padding-top: 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background: linear-gradient(135deg, #050505 0%, #0f0f1f 100%);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .footerSection {
+    transition: none;
+  }
+
+  .footerSection:hover {
+    transform: none;
+  }
+
+  .footerSection ul li a {
+    transition: none;
   }
 }
 

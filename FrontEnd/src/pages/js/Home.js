@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AIChat from '../../components/AIChat';
+import ThemeToggle from '../../components/ThemeToggle';
 import statsData from '../../data/stats.json';
 import overviewCardsData from '../../data/overviewCards.json';
 import { fetchCybersecurityNews } from '../../services/api';
@@ -37,7 +38,10 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-
+      {/* Theme Toggle - Fixed Position */}
+      <div className={styles.themeToggleWrapper}>
+        <ThemeToggle />
+      </div>
 
       {/* Hero Section */}
       <section className={styles.hero}>

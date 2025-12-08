@@ -5,6 +5,26 @@ body {
   line-height: 1.6;
 }
 
+/* Theme Toggle Wrapper */
+.themeToggleWrapper {
+  position: fixed;
+  top: 90px;
+  right: 2rem;
+  z-index: 999;
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 div {
   padding: 20px;
 }
@@ -379,6 +399,11 @@ span {
 }
 
 @media (max-width: 768px) {
+  .themeToggleWrapper {
+    top: 75px;
+    right: 1rem;
+  }
+
   .heroContainer {
     flex-direction: column;
     text-align: center;
@@ -407,5 +432,12 @@ span {
 
   .cardsContainer {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .themeToggleWrapper {
+    top: 70px;
+    right: 0.75rem;
   }
 }
