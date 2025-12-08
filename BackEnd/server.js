@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./config/database');
 const { apiLimiter } = require('./middleware/rateLimiter');
+const errorHandler = require('./middleware/errorHandler');
 
 // Load environment variables
 dotenv.config();
@@ -59,15 +60,6 @@ app.use('/api/incidents', require('./routes/incidentRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/upload', require('./routes/uploadRoutes'));
 
-// Error handling middleware (will be implemented in Phase 8)
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || 'Internal Server Error',
-  });
-});
-
 // 404 handler
 app.use((req, res) => {
   res.status(404).json({
@@ -75,6 +67,9 @@ app.use((req, res) => {
     message: 'Route not found',
   });
 });
+
+// Centralized error handling
+app.use(errorHandler);
 
 // Start server
 const PORT = process.env.PORT || 5000;
