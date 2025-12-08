@@ -1,0 +1,188 @@
+.pageContainer {
+    font-family: 'Roboto Mono', monospace;
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    min-height: 100vh;
+    padding-top: 70px;
+    padding-bottom: 4rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.pageHeader {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    padding: 3rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pageTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00ff00;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.form {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #00ff00;
+    font-weight: 500;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    border-radius: 5px;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: #00ff00;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+.textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submitBtn {
+    background-color: #00ff00;
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.submitBtn:hover {
+    background-color: #00cc00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+.submitBtn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #ff4444;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ff4444;
+}
+
+.imagePreview {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 1rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+.timelineSection {
+    margin-bottom: 1.5rem;
+}
+
+.timelineEvent {
+    background: #0d0d0d;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid #333;
+}
+
+.timelineHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #00ff00;
+}
+
+.eventLabel {
+    color: #00ff00;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.removeBtn {
+    background: #ff3333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.removeBtn:hover {
+    background: #cc0000;
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+}
+
+.addBtn {
+    background: #00ff00;
+    color: #000;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'Roboto Mono', monospace;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.addBtn:hover {
+    background: #00cc00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.charCount {
+    display: block;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    text-align: right;
+}
+
+.charCount {
+    display: block;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    text-align: right;
+}
