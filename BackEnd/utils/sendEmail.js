@@ -1,8 +1,19 @@
-// Email sending utility
+const createTransporter = require('../config/email');
 
+// Basic email sender (used by auth flows)
+// options: { to, subject, text, html }
 const sendEmail = async (options) => {
-  // Email sending logic will be added here
-  console.log('Email sending functionality will be implemented in Phase 7');
+  const transporter = createTransporter();
+
+  const mailOptions = {
+    from: process.env.EMAIL_FROM || 'noreply@example.com',
+    to: options.to,
+    subject: options.subject,
+    text: options.text,
+    html: options.html,
+  };
+
+  await transporter.sendMail(mailOptions);
 };
 
 module.exports = sendEmail;
