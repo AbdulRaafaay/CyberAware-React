@@ -25,12 +25,15 @@ connectDB();
 // Connect to Redis (optional - app continues without it)
 connectRedis();
 
-// Request logging
-app.use(requestLogger);
-
 // Security Middleware
 app.use(helmet());
-app.use(mongoSanitize());
+// Mongo-sanitize temporarily disabled - Express 5.x incompatibility
+// app.use(mongoSanitize({
+//   replaceWith: '_',
+//   onSanitize: ({ req, key }) => {
+//     logger.warn(`Sanitized key: ${key} in request to ${req.path}`);
+//   },
+// }));
 
 // CORS Configuration
 const allowedOrigins = process.env.FRONTEND_URL 
@@ -51,12 +54,16 @@ app.use(cors({
   credentials: true
 }));
 
-// Rate limiting for all /api routes
-app.use('/api', apiLimiter);
-
-// Body Parser Middleware
+// Body Parser Middleware (must come before request logger)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Request logging (after body parsers)
+app.use(requestLogger);
+
+// Rate limiting for all /api routes
+// Temporarily disabled - incompatible with Express 5.x
+// app.use('/api', apiLimiter);
 
 // Basic route
 app.get('/', (req, res) => {
@@ -106,9 +113,9 @@ let server;
 
 if (process.env.NODE_ENV !== 'test') {
   server = app.listen(PORT, () => {
-    logger.info(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-    logger.info(`📚 API Documentation: http://localhost:${PORT}/api-docs`);
-    logger.info(`🏥 Health Check: http://localhost:${PORT}/api/health`);
+    logger.info(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    logger.info(`API Documentation: http://localhost:${PORT}/api-docs`);
+    logger.info(`Health Check: http://localhost:${PORT}/api/health`);
   });
 
   // Graceful shutdown

@@ -21,23 +21,23 @@ const connectRedis = async () => {
 
     // Error handling
     redisClient.on('error', (err) => {
-      logger.error(`❌ Redis Client Error: ${err.message}`);
+      logger.error(`Redis Client Error: ${err.message}`);
     });
 
     redisClient.on('connect', () => {
-      logger.info('🔄 Redis: Attempting connection...');
+      logger.info('Redis: Attempting connection...');
     });
 
     redisClient.on('ready', () => {
-      logger.info('✅ Redis: Connected and ready!');
+      logger.info('Redis: Connected and ready!');
     });
 
     redisClient.on('reconnecting', () => {
-      logger.info('🔄 Redis: Reconnecting...');
+      logger.info('Redis: Reconnecting...');
     });
 
     redisClient.on('end', () => {
-      logger.info('🔌 Redis: Connection closed');
+      logger.info('Redis: Connection closed');
     });
 
     // Connect to Redis
@@ -45,8 +45,8 @@ const connectRedis = async () => {
 
     return redisClient;
   } catch (error) {
-    logger.error(`❌ Redis Connection Error: ${error.message}`);
-    logger.info('⚠️  Application will continue without Redis caching');
+    logger.error(`Redis Connection Error: ${error.message}`);
+    logger.info('Application will continue without Redis caching');
     return null;
   }
 };

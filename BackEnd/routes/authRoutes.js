@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/authController');
-const { authLimiter } = require('../middleware/rateLimiter');
+// const { authLimiter } = require('../middleware/rateLimiter'); // Temporarily disabled - Express 5.x incompatibility
 const {
   validate,
   registerSchema,
@@ -60,7 +60,7 @@ const {
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post('/register', authLimiter, validate(registerSchema), authController.register);
+router.post('/register', validate(registerSchema), authController.register);
 
 /**
  * @swagger
@@ -107,10 +107,10 @@ router.post('/register', authLimiter, validate(registerSchema), authController.r
  *             schema:
  *               $ref: '#/components/schemas/Error'
  */
-router.post('/login', authLimiter, validate(loginSchema), authController.login);
+router.post('/login', validate(loginSchema), authController.login);
 
-router.post('/forgot-password', authLimiter, validate(forgotPasswordSchema), authController.forgotPassword);
-router.patch('/reset-password/:token', authLimiter, validate(resetPasswordSchema), authController.resetPassword);
+router.post('/forgot-password', validate(forgotPasswordSchema), authController.forgotPassword);
+router.patch('/reset-password/:token', validate(resetPasswordSchema), authController.resetPassword);
 
 module.exports = router;
 

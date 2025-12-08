@@ -1,18 +1,27 @@
-const morgan = require('morgan');
 const logger = require('../config/logger');
 
-// Custom Morgan format
-const format = process.env.NODE_ENV === 'production'
-  ? ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms'
-  : ':method :url :status :response-time ms - :res[content-length]';
-
-// Create Morgan middleware with custom stream
-const requestLogger = morgan(format, {
-  stream: logger.stream,
-  skip: (req, res) => {
-    // Skip logging health check in production
-    return process.env.NODE_ENV === 'production' && req.url === '/api/health';
+// Custom HTTP request logger middleware (Express 5.x compatible)
+const requestLogger = (req, res, next) => {
+  const start = Date.now();
+  
+  // Skip health check in production
+  if (process.env.NODE_ENV === 'production' && req.url === '/api/health') {
+    return next();
   }
-});
+
+  // Capture response
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    const message = `${req.method} ${req.url} ${res.statusCode} ${duration}ms`;
+    
+    if (res.statusCode >= 400) {
+      logger.error(message);
+    } else {
+      logger.info(message);
+    }
+  });
+
+  next();
+};
 
 module.exports = requestLogger;
