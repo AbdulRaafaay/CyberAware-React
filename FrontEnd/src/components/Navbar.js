@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 import styles from './Navbar.module.css';
 import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -72,6 +75,51 @@ const Navbar = () => {
               GitHub Search
             </Link>
           </li>
+
+          {!user && (
+            <>
+              <li className={styles.navItem}>
+                <Link to="/login" className={`${styles.navLink} ${isActive('/login')}`} onClick={() => setIsMenuOpen(false)}>
+                  Login
+                </Link>
+              </li>
+              <li className={styles.navItem}>
+                <Link to="/register" className={`${styles.navLink} ${isActive('/register')}`} onClick={() => setIsMenuOpen(false)}>
+                  Register
+                </Link>
+              </li>
+            </>
+          )}
+
+          {user && (
+            <>
+              <li className={styles.navItem}>
+                <Link to="/dashboard" className={`${styles.navLink} ${isActive('/dashboard')}`} onClick={() => setIsMenuOpen(false)}>
+                  Dashboard
+                </Link>
+              </li>
+              <li className={styles.navItem}>
+                <Link to="/profile" className={`${styles.navLink} ${isActive('/profile')}`} onClick={() => setIsMenuOpen(false)}>
+                  Profile
+                </Link>
+              </li>
+              <li className={styles.navItem}>
+                <span className={styles.navLink}>Hi, {user.name || 'User'}</span>
+              </li>
+              <li className={styles.navItem}>
+                <button
+                  className={styles.navButton}
+                  onClick={() => {
+                    logout();
+                    setIsMenuOpen(false);
+                    navigate('/');
+                  }}
+                >
+                  Logout
+                </button>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </nav>
