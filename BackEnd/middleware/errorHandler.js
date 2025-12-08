@@ -1,5 +1,6 @@
 // Centralized error handler
 // Normalizes common Mongoose/JWT/validation errors into consistent responses.
+const logger = require('../config/logger');
 
 const formatValidationErrors = (err) => {
   const errors = Object.values(err.errors || {}).map((e) => e.message);
@@ -21,7 +22,14 @@ const formatJwtError = () => ({ statusCode: 401, message: 'Invalid token. Please
 const formatJwtExpiredError = () => ({ statusCode: 401, message: 'Token expired. Please log in again.' });
 
 const errorHandler = (err, req, res, next) => {
-  console.error('Error caught by handler:', err); // Log for debugging
+  // Log error details
+  logger.error(`${err.message}`, {
+    method: req.method,
+    url: req.originalUrl,
+    ip: req.ip,
+    user: req.user?.id || 'unauthenticated',
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+  });
 
   // Default response
   let statusCode = err.statusCode || 500;

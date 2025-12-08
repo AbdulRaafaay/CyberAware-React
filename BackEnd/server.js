@@ -10,6 +10,8 @@ const { connectRedis } = require('./config/redis');
 const swaggerSpec = require('./config/swagger');
 const { apiLimiter } = require('./middleware/rateLimiter');
 const errorHandler = require('./middleware/errorHandler');
+const logger = require('./config/logger');
+const requestLogger = require('./middleware/requestLogger');
 
 // Load environment variables
 dotenv.config();
@@ -23,20 +25,31 @@ connectDB();
 // Connect to Redis (optional - app continues without it)
 connectRedis();
 
+// Request logging
+app.use(requestLogger);
+
 // Security Middleware
 app.use(helmet());
-// if (process.env.NODE_ENV !== 'test') {
-//   app.use(mongoSanitize());
-// }
+app.use(mongoSanitize());
 
 // CORS Configuration
-app.use(cors()); // Allow all origins for debugging
-// app.use(
-//   cors({
-//     origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-//     credentials: true,
-//   })
-// );
+const allowedOrigins = process.env.FRONTEND_URL 
+  ? process.env.FRONTEND_URL.split(',')
+  : ['http://localhost:3000'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin) || process.env.NODE_ENV === 'development') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 
 // Rate limiting for all /api routes
 app.use('/api', apiLimiter);
@@ -89,11 +102,41 @@ app.use(errorHandler);
 
 // Start server
 const PORT = process.env.PORT || 5000;
+let server;
 
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  server = app.listen(PORT, () => {
+    logger.info(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+    logger.info(`📚 API Documentation: http://localhost:${PORT}/api-docs`);
+    logger.info(`🏥 Health Check: http://localhost:${PORT}/api/health`);
   });
+
+  // Graceful shutdown
+  const gracefulShutdown = async (signal) => {
+    logger.info(`${signal} signal received: closing HTTP server`);
+    server.close(async () => {
+      logger.info('HTTP server closed');
+      
+      // Close database connections
+      try {
+        await mongoose.connection.close();
+        logger.info('MongoDB connection closed');
+        process.exit(0);
+      } catch (err) {
+        logger.error('Error closing MongoDB connection:', err);
+        process.exit(1);
+      }
+    });
+
+    // Force close after 10 seconds
+    setTimeout(() => {
+      logger.error('Could not close connections in time, forcefully shutting down');
+      process.exit(1);
+    }, 10000);
+  };
+
+  process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+  process.on('SIGINT', () => gracefulShutdown('SIGINT'));
 }
 
 module.exports = app;

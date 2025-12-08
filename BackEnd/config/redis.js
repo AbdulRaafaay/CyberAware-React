@@ -1,4 +1,5 @@
 const redis = require('redis');
+const logger = require('./logger');
 
 let redisClient = null;
 
@@ -10,7 +11,7 @@ const connectRedis = async () => {
       socket: {
         reconnectStrategy: (retries) => {
           if (retries > 10) {
-            console.log('Redis: Too many retries, stopping reconnection');
+            logger.warn('⚠️  Redis: Too many retries, stopping reconnection');
             return new Error('Redis connection failed');
           }
           return retries * 100; // Reconnect after retries * 100ms
@@ -20,23 +21,23 @@ const connectRedis = async () => {
 
     // Error handling
     redisClient.on('error', (err) => {
-      console.error('Redis Client Error:', err.message);
+      logger.error(`❌ Redis Client Error: ${err.message}`);
     });
 
     redisClient.on('connect', () => {
-      console.log('Redis: Attempting connection...');
+      logger.info('🔄 Redis: Attempting connection...');
     });
 
     redisClient.on('ready', () => {
-      console.log('Redis: Connected and ready!');
+      logger.info('✅ Redis: Connected and ready!');
     });
 
     redisClient.on('reconnecting', () => {
-      console.log('Redis: Reconnecting...');
+      logger.info('🔄 Redis: Reconnecting...');
     });
 
     redisClient.on('end', () => {
-      console.log('Redis: Connection closed');
+      logger.info('🔌 Redis: Connection closed');
     });
 
     // Connect to Redis
@@ -44,8 +45,8 @@ const connectRedis = async () => {
 
     return redisClient;
   } catch (error) {
-    console.error('Redis Connection Error:', error.message);
-    console.log('Application will continue without Redis caching');
+    logger.error(`❌ Redis Connection Error: ${error.message}`);
+    logger.info('⚠️  Application will continue without Redis caching');
     return null;
   }
 };
