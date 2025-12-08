@@ -1,5 +1,6 @@
 const Incident = require('../models/Incident');
 const catchAsync = require('../middleware/catchAsync');
+const { clearIncidentCache } = require('../middleware/cache');
 
 // @desc    Create new incident
 // @route   POST /api/incidents
@@ -16,6 +17,9 @@ const createIncident = catchAsync(async (req, res) => {
     images,
     createdBy: req.user._id,
   });
+
+  // Clear incident cache after creation
+  await clearIncidentCache();
 
   res.status(201).json({ success: true, data: incident });
 });
@@ -122,6 +126,9 @@ const updateIncident = catchAsync(async (req, res) => {
 
   await incident.save();
 
+  // Clear incident cache after update
+  await clearIncidentCache();
+
   res.status(200).json({ success: true, data: incident });
 });
 
@@ -140,6 +147,9 @@ const deleteIncident = catchAsync(async (req, res) => {
   }
 
   await incident.deleteOne();
+
+  // Clear incident cache after deletion
+  await clearIncidentCache();
 
   res.status(200).json({ success: true, message: 'Incident deleted' });
 });

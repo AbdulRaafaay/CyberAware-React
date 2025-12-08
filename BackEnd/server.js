@@ -4,7 +4,10 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
+const swaggerUi = require('swagger-ui-express');
 const connectDB = require('./config/database');
+const { connectRedis } = require('./config/redis');
+const swaggerSpec = require('./config/swagger');
 const { apiLimiter } = require('./middleware/rateLimiter');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -16,6 +19,9 @@ const app = express();
 
 // Connect to database
 connectDB();
+
+// Connect to Redis (optional - app continues without it)
+connectRedis();
 
 // Security Middleware
 app.use(helmet());
@@ -45,8 +51,15 @@ app.get('/', (req, res) => {
     message: 'CyberAware API Server',
     version: '1.0.0',
     status: 'running',
+    docs: '/api-docs',
   });
 });
+
+// API Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+  customCss: '.swagger-ui .topbar { display: none }',
+  customSiteTitle: 'CyberAware API Docs',
+}));
 
 // Health check route
 app.get('/api/health', (req, res) => {
