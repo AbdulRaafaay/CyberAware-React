@@ -15,7 +15,6 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: [true, 'Please provide an email'],
-      unique: true,
       lowercase: true,
       trim: true,
       match: [
@@ -47,8 +46,8 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-// Index for email (already unique, but explicit index for performance)
-userSchema.index({ email: 1 });
+// Index for email with unique constraint
+userSchema.index({ email: 1 }, { unique: true });
 userSchema.index({ role: 1 });
 
 // Hash password before saving
