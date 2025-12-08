@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../css/GithubSearch.module.css';
+import styles from '../css/GitHubSearch.module.css';
 
 const GithubSearch = () => {
   const [username, setUsername] = useState('');
