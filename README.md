@@ -238,14 +238,6 @@ npm test
 - ✅ NoSQL injection prevention
 - ✅ HTTPS-ready (production)
 
-## 📦 Deployment
-
-### Backend Deployment (Render)
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions
-
-### Frontend Deployment (Vercel)
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions
-
 ## 🐳 Docker Support
 
 Full stack containerization with Docker Compose:
