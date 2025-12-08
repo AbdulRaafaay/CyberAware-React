@@ -52,29 +52,16 @@ userSchema.index({ email: 1 });
 userSchema.index({ role: 1 });
 
 // Hash password before saving
-userSchema.pre('save', async function (next) {
-  // Only hash the password if it has been modified (or is new)
-  if (!this.isModified('password')) {
-    return next();
-  }
-
-  try {
-    // Hash password with cost of 12
-    const salt = await bcrypt.genSalt(12);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (error) {
-    next(error);
-  }
+userSchema.pre('save', async function () {
+  if (!this.isModified('password')) return;
+  const salt = await bcrypt.genSalt(12);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 // Set passwordChangedAt when password is updated (but not on new user)
-userSchema.pre('save', function (next) {
-  if (!this.isModified('password') || this.isNew) {
-    return next();
-  }
+userSchema.pre('save', function () {
+  if (!this.isModified('password') || this.isNew) return;
   this.passwordChangedAt = Date.now() - 1000; // Slight offset to ensure token issued before save is invalidated
-  next();
 });
 
 // Method to compare password
